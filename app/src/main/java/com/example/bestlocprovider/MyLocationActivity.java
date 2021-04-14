@@ -85,6 +85,11 @@ public class MyLocationActivity extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        Location loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(loc != null){
+            locListener.onLocationChanged(loc);
+        }
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
+    }
     }
 }
